@@ -9,6 +9,14 @@ public class PartnerFollow : MonoBehaviour
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.position);
+        if (distance > 3f)
+        {
+            followSpeed = 5f;
+        }
+        else
+        {
+            followSpeed = 3f;
+        }
         if (distance > followDistance)
         {
             transform.position = Vector2.MoveTowards(
