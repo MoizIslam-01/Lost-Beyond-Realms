@@ -40,10 +40,7 @@ public class PlayerMovement : MonoBehaviour
             Shoot();
     }
 
-    void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-    }
+    
 
     void Shoot()
     {
