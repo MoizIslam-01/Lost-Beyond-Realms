@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6498188828104978385, guid: b9e8e62d81745174f83f034e03ae373c, type: 3}
       propertyPath: m_Size.y
-      value: 12.246492
+      value: 11.945808
       objectReference: {fileID: 0}
     - target: {fileID: 6498188828104978385, guid: b9e8e62d81745174f83f034e03ae373c, type: 3}
       propertyPath: m_Offset.x
@@ -145,15 +145,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6498188828104978385, guid: b9e8e62d81745174f83f034e03ae373c, type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: 0.04716015
       objectReference: {fileID: 0}
     - target: {fileID: 6734232878097405653, guid: b9e8e62d81745174f83f034e03ae373c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 6734232878097405653, guid: b9e8e62d81745174f83f034e03ae373c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.32
+      value: -2.28
       objectReference: {fileID: 0}
     - target: {fileID: 6734232878097405653, guid: b9e8e62d81745174f83f034e03ae373c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -209,7 +209,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -335,21 +334,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 286c72ad3acac9d4b812f3f32353d2e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 143293181}
-  smoothSpeed: 0.125
-  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,6 +673,18 @@ PrefabInstance:
     - target: {fileID: 5000497490651027176, guid: 1f313c62f3a851548a4f9954b6e5b9f9, type: 3}
       propertyPath: m_Offset.y
       value: -0.009646013
+      objectReference: {fileID: 0}
+    - target: {fileID: 5650121901725524348, guid: 1f313c62f3a851548a4f9954b6e5b9f9, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5650121901725524348, guid: 1f313c62f3a851548a4f9954b6e5b9f9, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5650121901725524348, guid: 1f313c62f3a851548a4f9954b6e5b9f9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7141091909177717445, guid: 1f313c62f3a851548a4f9954b6e5b9f9, type: 3}
       propertyPath: moveSpeed

@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         movement = new Vector2(horizontal, vertical);
 
+        transform.Translate(movement * moveSpeed * Time.deltaTime);
+
         // Update lastDirection based on any horizontal input (even when moving diagonally)
         if (horizontal > 0)
             lastDirection = Vector2.right;
@@ -38,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
         // Shooting on Space key press
         if (Input.GetKeyDown(KeyCode.Space))
             Shoot();
+
+        
     }
 
     
