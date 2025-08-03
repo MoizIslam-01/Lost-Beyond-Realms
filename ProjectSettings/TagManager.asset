@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Fireball
+  - Floor
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,9 +15,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Floor
+  - Enemy
   - 
   - 
   - 
