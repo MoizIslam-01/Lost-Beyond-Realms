@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.gravityScale = 0f;
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            
+
             isGrounded = false;
         }
         if (rb.linearVelocity.y < 0)
@@ -74,11 +74,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
             Deflect();
-            FinalAtk();
 
         if (Input.GetKeyDown(KeyCode.T))
+        {
             GetEnergy();
-              
+            FinalAtk();
+        }
+                          
     }
     void TakeDmg(){
         Health -=1;
@@ -86,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     void GetEnergy()
     {
-        energy *=1;
+        energy +=1;
     }
 
     void FinalAtk(){
