@@ -76,19 +76,17 @@ public class PlayerMovement : MonoBehaviour
             Deflect();
 
         if (Input.GetKeyDown(KeyCode.T))
-        {
             GetEnergy();
-            FinalAtk();
-        }
-                          
+            FinalAtk();              
     }
-    void TakeDmg(){
+    public void TakeDmg(){
         Health -=1;
+        Debug.Log("Player Health: " + Health);
     }
 
-    void GetEnergy()
+    public void GetEnergy()
     {
-        energy +=1;
+        energy *=1;
     }
 
     void FinalAtk(){
@@ -144,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Shoot();
+            TakeDmg();
         }
     }
 

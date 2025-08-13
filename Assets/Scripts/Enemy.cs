@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
         // Move left and right constantly
         transform.Translate(Vector2.right * direction * moveSpeed * Time.deltaTime);
     }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Wall"))
@@ -22,10 +21,9 @@ public class Enemy : MonoBehaviour
             // Flip direction when hitting a wall trigger
             direction *= -1;
         }
-        else if (other.CompareTag("Parry"))
+        if (other.CompareTag("Parry"))
         {
             direction *= -1;
-
         }
         else if (other.CompareTag("Fireball"))
         {
