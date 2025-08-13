@@ -22,21 +22,18 @@ public class Enemy : MonoBehaviour
             // Flip direction when hitting a wall trigger
             direction *= -1;
         }
+        else if (other.CompareTag("Parry"))
+        {
+            direction *= -1;
+
+        }
         else if (other.CompareTag("Fireball"))
         {
             // Take damage from fireball
             TakeDamage(1);
             Destroy(other.gameObject);
         }
-        else if (other.CompareTag("Player"))
-        {
-            // Damage the player when touched
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(1);
-            }
-        }
+        
     }
 
     void TakeDamage(int damage)

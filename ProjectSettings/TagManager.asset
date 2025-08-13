@@ -8,6 +8,8 @@ TagManager:
   - Fireball
   - Floor
   - Enemy
+  - Parry
+  - FINAL
   layers:
   - Default
   - TransparentFX

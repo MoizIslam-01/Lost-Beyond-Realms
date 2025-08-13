@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &968015872220775570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5760893386658026078}
+  m_Layer: 0
+  m_Name: Finalpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5760893386658026078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968015872220775570}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4831729305212799386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1488513686996783001
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,11 +60,13 @@ Transform:
   m_GameObject: {fileID: 1488513686996783001}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.039579272, y: 0.063486844, z: 0}
+  m_LocalPosition: {x: -0.41, y: -3.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8505369530507219608}
+  - {fileID: 8619493302541563649}
+  - {fileID: 5760893386658026078}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5650121901725524348
@@ -85,7 +118,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 0.14, y: 0.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -152,8 +185,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.005665332, y: -0.009646013}
-  m_Size: {x: 0.24360359, y: 0.41218606}
+  m_Offset: {x: 0.014019728, y: -0.0152157545}
+  m_Size: {x: 0.29373068, y: 0.6461117}
   m_Direction: 0
 --- !u!114 &5279564034783325959
 MonoBehaviour:
@@ -167,11 +200,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b612b6cfbd32404b8be5a588084fcc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 10
+  energy: 0
   moveSpeed: 4
   jumpForce: 7
   fireballPrefab: {fileID: 6763449426581473987, guid: 70e3385554349d0499ce56f15799202d, type: 3}
   firePoint: {fileID: 8505369530507219608}
   firePointDistance: 0.25
+  deflectPerfab: {fileID: 1606555811079810084, guid: d6f7480273eee22408831caf0099a101, type: 3}
+  deflectpoint: {fileID: 8619493302541563649}
+  finalprefab1: {fileID: 2669651723881189294, guid: a59cccff5c129774fbe0fb13c7c8b5a7, type: 3}
+  finalprefab2: {fileID: 3749196950522923576, guid: 1fcfd0e9cba81344499e37a4f531405f, type: 3}
+  finalprefab3: {fileID: 4574292777743401273, guid: f98e3c7ee2b75824fb28a784b4edfb65, type: 3}
+  finalprefab4: {fileID: 7301615000639080790, guid: 819b92d7d79e08a42aff70d7ae2703b4, type: 3}
+  finalpoint: {fileID: 5760893386658026078}
+--- !u!1 &2498037496636949758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8619493302541563649}
+  m_Layer: 0
+  m_Name: Deflectpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8619493302541563649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2498037496636949758}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4831729305212799386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8453668814333703531
 GameObject:
   m_ObjectHideFlags: 0
