@@ -73,11 +73,12 @@ public class PlayerMovement : MonoBehaviour
             Shoot();
 
         if (Input.GetKeyDown(KeyCode.Q))
+        {
+            
             Deflect();
-
-        if (Input.GetKeyDown(KeyCode.T))
-            GetEnergy();
-            FinalAtk();              
+            
+        }
+                          
     }
     public void TakeDmg(){
         Health -=1;
@@ -86,38 +87,49 @@ public class PlayerMovement : MonoBehaviour
 
     public void GetEnergy()
     {
-        energy *=1;
+        energy += 1;
+        Debug.Log("Player Energy: " + energy);
     }
 
-    void FinalAtk(){
+    private GameObject currentFinalAttack; // store the active attack
+
+    public void FinalAtk()
+    {
+        GameObject prefabToSpawn = null;
+
         if (energy == 2)
+            prefabToSpawn = finalprefab1;
+        else if (energy == 4)
+            prefabToSpawn = finalprefab2;
+        else if (energy == 6)
+            prefabToSpawn = finalprefab3;
+        else if (energy == 8)
+            prefabToSpawn = finalprefab4;
+
+        if (prefabToSpawn != null)
         {
-            if (finalprefab1 == null) return;
-            GameObject final = Instantiate(finalprefab1, finalpoint.position, Quaternion.identity);
-        }
-        if (energy == 4)
-        {
-            if (finalprefab2 == null) return;
-            GameObject final = Instantiate(finalprefab2, finalpoint.position, Quaternion.identity);
-        }
-        if (energy == 6)
-        {
-            if (finalprefab3 == null) return;
-            GameObject final = Instantiate(finalprefab3, finalpoint.position, Quaternion.identity);
-        }
-        if (energy == 8)
-        {
-            if (finalprefab4 == null) return;
-            GameObject final = Instantiate(finalprefab4, finalpoint.position, Quaternion.identity);
+            // Destroy old attack if it exists
+            if (currentFinalAttack != null)
+                Destroy(currentFinalAttack);
+
+            // Spawn new one and parent to player so it follows
+            currentFinalAttack = Instantiate(prefabToSpawn, finalpoint.position, Quaternion.identity);
+            currentFinalAttack.transform.SetParent(transform); 
+
+            // Keep it at fixed offset above head
+            currentFinalAttack.transform.localPosition = new Vector3(0, 1.5f, 0);
         }
     }
+
 
     void Deflect()
     {
         if (deflectPerfab == null) return;
 
         GameObject shield = Instantiate(deflectPerfab, deflectpoint.position, Quaternion.identity);
-        Destroy(shield,0.1f);
+        shield.transform.SetParent(deflectpoint);
+        Destroy(shield, 0.1f);
+        
     }
 
     void Shoot()
@@ -138,13 +150,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            TakeDmg();
-        }
-    }
+    
 
     public Vector2 GetLastDirection()
     {

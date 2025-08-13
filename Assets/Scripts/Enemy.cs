@@ -18,13 +18,36 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Wall"))
         {
-            // Flip direction when hitting a wall trigger
             direction *= -1;
         }
-        if (other.CompareTag("Parry"))
+        else if (other.CompareTag("Parry"))
         {
+            
             direction *= -1;
+
+            // Give energy to player
+            PlayerMovement pm = other.GetComponentInParent<PlayerMovement>();
+            if (pm != null)
+            {
+                pm.GetEnergy();
+                pm.FinalAtk();
+                Debug.Log("Energy gained from parry!");
+            }
+
+            // STOP here so we don't damage the player this frame
+            return;
         }
+        else if (other.CompareTag("Player"))
+        {
+            
+            PlayerMovement ph = other.GetComponentInParent<PlayerMovement>();
+            if (ph != null)
+            {
+                ph.TakeDmg();
+            }
+        }
+
+
         else if (other.CompareTag("Fireball"))
         {
             // Take damage from fireball
