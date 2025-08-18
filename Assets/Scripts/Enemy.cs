@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
         }
         else if (other.CompareTag("Parry"))
         {
-            
+            moveSpeed += 5;
             direction *= -1;
 
             // Give energy to player

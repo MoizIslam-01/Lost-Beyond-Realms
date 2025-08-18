@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 1488513686996783001}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.48, y: -3.96, z: 0}
+  m_LocalPosition: {x: -3.22665, y: -3.85571, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -68,6 +68,7 @@ Transform:
   - {fileID: 8619493302541563649}
   - {fileID: 5760893386658026078}
   - {fileID: 2454009679892271571}
+  - {fileID: 3991439825883738284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5650121901725524348
@@ -207,7 +208,7 @@ MonoBehaviour:
   jumpForce: 7
   fireballPrefab: {fileID: 6763449426581473987, guid: 70e3385554349d0499ce56f15799202d, type: 3}
   firePoint: {fileID: 8505369530507219608}
-  firePointDistance: 0.25
+  firePointDistance: 1
   deflectPerfab: {fileID: 1606555811079810084, guid: d6f7480273eee22408831caf0099a101, type: 3}
   deflectpoint: {fileID: 8619493302541563649}
   finalprefab1: {fileID: 2669651723881189294, guid: a59cccff5c129774fbe0fb13c7c8b5a7, type: 3}
@@ -315,6 +316,37 @@ CapsuleCollider2D:
   m_Offset: {x: 0.007252708, y: -0.00000011920929}
   m_Size: {x: 0.2920892, y: 0.5745084}
   m_Direction: 0
+--- !u!1 &7758620994546776308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3991439825883738284}
+  m_Layer: 6
+  m_Name: Fallingpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3991439825883738284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7758620994546776308}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4831729305212799386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8453668814333703531
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +372,7 @@ Transform:
   m_GameObject: {fileID: 8453668814333703531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -29,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
     public GameObject finalprefab4;
     public Transform finalpoint;
 
+    [Header("Falling Atack")]
+    public Transform Fallingpoint;
+    public GameObject Fallingprefab;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -61,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (rb.linearVelocity.y < 0)
         {
-            rb.gravityScale = 3f; // stronger gravity going down
+            rb.gravityScale = 4f; // stronger gravity going down
         }
         else
         {
@@ -74,9 +78,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            
+
             Deflect();
-            
+
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Falling();  
         }
                           
     }
@@ -121,7 +129,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
+    void Falling()
+    {
+        if (Fallingprefab == null) return;
+        GameObject falling = Instantiate(Fallingprefab, Fallingpoint.position, Quaternion.identity);
+        falling.transform.SetParent(transform);
+        Destroy(falling, 1f);
+    }
     void Deflect()
     {
         if (deflectPerfab == null) return;
