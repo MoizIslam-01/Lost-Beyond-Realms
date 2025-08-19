@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static System.Action<Vector3> OnAnyEnemyDeath;
     [Header("Movement")]
     public float moveSpeed = 2f;
     private int direction = 1; // 1 = right, -1 = left
@@ -26,9 +27,16 @@ public class Enemy : MonoBehaviour
             TakeDamage(health);
             Debug.Log("Attack hit");
         }
+        else if (other.CompareTag("FINAL"))
+        {
+            // Take damage from final attack
+            TakeDamage(health);
+            Destroy(other.gameObject);
+            Debug.Log("Final attack hit enemy!");
+        }
         else if (other.CompareTag("Parry"))
         {
-            moveSpeed += 5;
+            //moveSpeed += 5;
             direction *= -1;
 
             // Give energy to player
@@ -60,7 +68,7 @@ public class Enemy : MonoBehaviour
             TakeDamage(1);
             Destroy(other.gameObject);
         }
-        
+
     }
 
     void TakeDamage(int damage)
@@ -70,5 +78,10 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    void OnDestroy()
+    {
+        if (!gameObject.scene.isLoaded) return; // ignore scene unload
+        OnAnyEnemyDeath?.Invoke(transform.position);
     }
 }

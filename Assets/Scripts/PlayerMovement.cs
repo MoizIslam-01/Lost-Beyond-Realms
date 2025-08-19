@@ -91,46 +91,66 @@ public class PlayerMovement : MonoBehaviour
         
                           
     }
-    public void TakeDmg(){
-        Health -=1;
+    public void TakeDmg()
+    {
+        Health -= 1;
         Debug.Log("Player Health: " + Health);
+        if (Health <= 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        // Tell GameManager that player has died
+        GameManager.Instance.GameOver();
     }
 
     public void GetEnergy()
     {
         energy += 1;
+        if (energy > 8) energy = 0; // cap energy at 8
         Debug.Log("Player Energy: " + energy);
     }
 
     private GameObject currentFinalAttack; // store the active attack
 
     public void FinalAtk()
+{
+    GameObject prefabToSpawn = null;
+
+    if (energy == 2)
+        prefabToSpawn = finalprefab1;
+    else if (energy == 4)
+        prefabToSpawn = finalprefab2;
+    else if (energy == 6)
+        prefabToSpawn = finalprefab3;
+    else if (energy == 8)
+        prefabToSpawn = finalprefab4;
+
+    if (prefabToSpawn != null)
     {
-        GameObject prefabToSpawn = null;
+        if (currentFinalAttack != null)
+            Destroy(currentFinalAttack);
 
-        if (energy == 2)
-            prefabToSpawn = finalprefab1;
-        else if (energy == 4)
-            prefabToSpawn = finalprefab2;
-        else if (energy == 6)
-            prefabToSpawn = finalprefab3;
-        else if (energy == 8)
-            prefabToSpawn = finalprefab4;
+        currentFinalAttack = Instantiate(prefabToSpawn, finalpoint.position, Quaternion.identity);
 
-        if (prefabToSpawn != null)
+        // ✅ If it's the final stage (energy == 8), make it chase the enemy
+        if (energy == 8)
         {
-            // Destroy old attack if it exists
-            if (currentFinalAttack != null)
-                Destroy(currentFinalAttack);
-
-            // Spawn new one and parent to player so it follows
-            currentFinalAttack = Instantiate(prefabToSpawn, finalpoint.position, Quaternion.identity);
-            currentFinalAttack.transform.SetParent(transform); 
-
-            // Keep it at fixed offset above head
+            FinalAttackHoming homing = currentFinalAttack.AddComponent<FinalAttackHoming>();
+            homing.speed = 5f; // adjust as needed
+            homing.target = GameObject.FindGameObjectWithTag("Enemy")?.transform;
+        }
+        else
+        {
+            // Otherwise, keep it above player head
+            currentFinalAttack.transform.SetParent(transform);
             currentFinalAttack.transform.localPosition = new Vector3(0, 1.5f, 0);
         }
     }
+}
+
 
     void Falling()
     {
