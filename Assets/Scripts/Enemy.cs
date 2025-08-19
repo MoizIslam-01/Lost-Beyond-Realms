@@ -20,6 +20,12 @@ public class Enemy : MonoBehaviour
         {
             direction *= -1;
         }
+        else if (other.CompareTag("Falling"))
+        {
+
+            TakeDamage(health);
+            Debug.Log("Attack hit");
+        }
         else if (other.CompareTag("Parry"))
         {
             moveSpeed += 5;
@@ -39,7 +45,7 @@ public class Enemy : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
-            
+
             PlayerMovement ph = other.GetComponentInParent<PlayerMovement>();
             if (ph != null)
             {

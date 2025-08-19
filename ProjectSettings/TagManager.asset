@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Parry
   - FINAL
+  - Falling
   layers:
   - Default
   - TransparentFX

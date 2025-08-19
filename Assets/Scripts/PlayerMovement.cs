@@ -63,7 +63,13 @@ public class PlayerMovement : MonoBehaviour
 
             isGrounded = false;
         }
-        if (rb.linearVelocity.y < 0)
+        if (rb.linearVelocity.y != 0 && Input.GetKeyDown(KeyCode.T))
+        {
+            rb.gravityScale = 0f;
+            rb.AddForce(Vector2.down * 20, ForceMode2D.Impulse);
+            Falling();
+        }
+        else if (rb.linearVelocity.y < 0)
         {
             rb.gravityScale = 4f; // stronger gravity going down
         }
@@ -82,10 +88,7 @@ public class PlayerMovement : MonoBehaviour
             Deflect();
 
         }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Falling();  
-        }
+        
                           
     }
     public void TakeDmg(){
@@ -134,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
         if (Fallingprefab == null) return;
         GameObject falling = Instantiate(Fallingprefab, Fallingpoint.position, Quaternion.identity);
         falling.transform.SetParent(transform);
-        Destroy(falling, 1f);
+        Destroy(falling, 0.2f);
     }
     void Deflect()
     {
