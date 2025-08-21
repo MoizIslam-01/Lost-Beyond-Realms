@@ -8,9 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 780998552325682217}
-  - component: {fileID: 4404343180780223321}
-  - component: {fileID: 1758896765406556754}
+  - component: {fileID: 780998552325682217}       # Transform
+  - component: {fileID: 4404343180780223321}      # SpriteRenderer
+  - component: {fileID: 1758896765406556754}      # BoxCollider2D
+  - component: {fileID: 508839274159357901}       # Rigidbody2D (NEW)
+  - component: {fileID: 583920371234567891}       # PlatformEffector2D (NEW)
   m_Layer: 0
   m_Name: platform
   m_TagString: Untagged
@@ -119,10 +121,10 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1          # <— enable for PlatformEffector2D
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.019033432, y: -0.03806919}
+  m_Offset: {x: -0.0, y: -0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -132,5 +134,42 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.6091018, y: 0.42896736}
-  m_EdgeRadius: 0
+  m_Size: {x: 1.62, y: 0.30}
+  m_EdgeRadius: 0.02           # <— small rounding prevents snagging on corners
+--- !u!50 &508839274159357901
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4297817250441993733}
+  m_BodyType: 1                # 0=Dynamic, 1=Kinematic, 2=Static
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_Interpolate: 1             # Interpolate for smooth motion if moved via script
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4             # Freeze rotation (Z)
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0            # Platforms shouldn't fall
+--- !u!251 &583920371234567891
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4297817250441993733}
+  m_Enabled: 1
+  m_UseColliderMask: 0
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseOneWay: 1               # <— one-way from above
+  m_UseOneWayGrouping: 0
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SurfaceArc: 180
+  m_SideArc: 0
+  m_RotationalOffset: 0
